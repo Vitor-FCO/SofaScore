@@ -1,0 +1,23 @@
+Package: SofaScore
+Type: Package
+Title: Web Scraping of Sofa Score
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "Vitor", 
+      family = "Faria", 
+      email = "vitor.fariaco@gmail.com.br", 
+      role = c("aut", "cre")),
+      person(given = "Marcos", 
+      family = "Prates",
+      role = "aut"))
+Description: Package that uses R to do web scraping and provide football data found on the Sofa Score website.
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 4.0)
+RoxygenNote: 7.1.1
+Imports: RSelenium, stringr, lubridate

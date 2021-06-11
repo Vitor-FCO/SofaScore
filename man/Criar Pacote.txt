@@ -1,0 +1,36 @@
+
+fazer o citaion
+citation("roxygen2")
+pacote que teve a apresentação 
+
+#' @importFrom mvtnorm GenzBretz
+GB = mvtnorm::GenzBretz(maxpts = 5e4, abseps = 1e-9, releps = 0)
+
+colocar talvez depens ao inves de import
+
+
+
+Aula 25/01/20 e 27(eu acho) explica sobre o primeiro trabalho de criar pacote.
+Aula 01/02/20 R-stan-tools
+
+Imports: 
+    RSelenium,
+    stringr,
+    lubridate
+
+#####_____________ Erros 
+Description 
+	Error in read.dcf(path_desc) : 
+	  Linha começando com 'stringr, ...' está mal formada!
+Conflito com as funções que já estavm no meu R
+Warning in file(con, "rb") :
+  não foi possível abrir o arquivo 'C:/Users/vitor/AppData/Local/Temp/RtmpwFTX3f/SofaScore.Rcheck/00install.out': Permission denied
+Error in file(con, "rb") : não é possível abrir a conexão
+ 
+
+#####_____________ Outros assuntos 
+
+Reunião Semanal 
+Estágio a Docência: Achei legal do Sokol e da Glaura.
+Faz sentido calcular DP e variância para dados não paramétricos?
+

@@ -5,14 +5,12 @@
 \alias{Sofa_score.}
 \title{Open the page .}
 \usage{
-Sofa_score(port = NULL, chromever = NULL, ...)
+Sofa_score(browser = "firefox", ...)
 }
 \arguments{
-\item{port}{esse objeto precisa ser um código da porta que você utiliza pra abrir o navegador.}
+\item{browser}{esse objeto é o nome do browser que o R deverá utilizar.}
 
-\item{chromever}{esse objeto é o código atualizado do crome que utiliza.}
-
-\item{...}{argumentos adicionais passados para outros métodos.}
+\item{...}{argumentos adicionais passados da função "remoteDriver".}
 }
 \value{
 Abre a página do sofa score.

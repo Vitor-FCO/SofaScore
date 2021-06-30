@@ -6,7 +6,6 @@
 
 
 
-
 # Função que retorna o elenco do time
 ## Entrar com o "team" e "position"
 Players <- function(team=NULL,position=NULL){

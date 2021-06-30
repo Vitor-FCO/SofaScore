@@ -7,4 +7,8 @@
 #' @autor Vitor Faria de Carvalho Oliveira \email{vitor.fariaco@gmail.com}
 #'
 #' @name SofaScore
+#' @import RSelenium
+#' @import stats
+#' @import stringr
+#'
 #' NULL

@@ -1,15 +1,23 @@
+# ---------------------------------------------
+#' Função para trazer os proximos jogos do time.
+#'
+#' @aliases Upcoming_Games.
+#' @export
+#' @param server connection with the SofaScore website by the Sofa_score() function, this object should be of the class "SofaScore".
+#' @return retorna próximos jogos.
+#'
+#' @example
+#' \ donttest{
+#'
+#'
+#'
+#' }
 
-
-
-
-
-
-
-
-
-# Função para trazer os proximos jogos do time
 ## Entrar com o "team" (colocar)
-Upcoming_Games <- function(){
+Upcoming_Games <- function(server = NULL){
+  if(class(server) != "Sofa_score") stop("Only Sofa_score objects are acceptable. To create
+                                         a Sofa_score object see the Sofa_score() function!")
+  remDr <- server$remDr
   url <- 'https://www.sofascore.com/team/football/palmeiras/1963'
   remDr$navigate(url)
   webElem1<- NULL
@@ -51,7 +59,7 @@ Upcoming_Games <- function(){
     if (i>length(BD)) {
       break
     }
-    if (str_length(BD[i]) == 8) {
+    if (stringr::str_length(BD[i]) == 8) {
       BD <- c(BD[1:(i-1)],BD[i-7],BD[i:length(BD)])
     }
   }

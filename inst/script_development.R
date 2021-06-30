@@ -44,7 +44,13 @@ devtools::load_all()
 
 #-------------------------------------------------------------------------------
 # verificando o pacote:
+require("RSelenium")
+require("stringr")
+require("lubridate")
+require("SofaScore")
 
+
+#rm(list=ls(all=T))
 devtools::check()
 devtools::test()
 
@@ -80,7 +86,7 @@ usethis::use_github_release()
 
 
 ______________________
-Teste 
+Teste
 Brasileiro_A(type = "home")
 
 V <-Last_Games()

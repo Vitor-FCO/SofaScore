@@ -3,22 +3,22 @@
 #'
 #' @aliases Sofa_score.
 #' @export
-#' @param port esse objeto precisa ser um código da porta que você utiliza pra abrir o navegador.
-#' @param chromever esse objeto é o código atualizado do crome que utiliza.
-#' @param ... argumentos adicionais passados para outros métodos.
+#' @param browser esse objeto é o nome do browser que o R deverá utilizar.
+#' @param ... argumentos adicionais passados da função "remoteDriver".
 #' @return Abre a página do sofa score.
 #'
 #' @example
 #' \ donttest{
-#' Sofa_score(port = 4444L ,chromever = "87.0.4280.88")
+#' Sofa_score(port = 4444L ,browser = "firefox")
 #' }
 
-Sofa_score <- function(port = NULL ,chromever = NULL, ...){
+Sofa_score <- function(browser = "firefox", ...){
   url <- 'https://www.sofascore.com/tournament/football/brazil/brasileiro-serie-a/325'
-  rD <- suppressWarnings(try(RSelenium::rsDriver(port = 4444L ,chromever = "87.0.4280.88")))
-  remDr <-  try(RSelenium::remoteDriver$new())
-  remDr$open()
+  rd <- RSelenium::rsDriver(browser = browser, ...)
+  remDr <- rd[["client"]]
   remDr$navigate(url)
-  return(remDr)
+  out <- list(remDr = remDr, rD = rd)
+  class(out) <- "SofaScore"
+  return(out)
 }
 

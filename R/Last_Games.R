@@ -1,16 +1,22 @@
+# ---------------------------------------------
+#' Função para trazer os ultimos jogos do time.
+#'
+#' @aliases Last_Games.
+#' @export
+#' @param server connection with the SofaScore website by the Sofa_score() function, this object should be of the class "SofaScore".
+#' @return retorna últimos jogos.
+#'
+#' @example
+#' \ donttest{
+#'
+#'
+#'
+#' }
 
-
-
-
-
-
-
-
-
-# Função para trazer os ultimos jogos do time
-## Entrar com o "team" (colocar)
-#remDr$open()
-Last_Games <- function(){
+Last_Games <- function(server = NULL){
+  if(class(server) != "Sofa_score") stop("Only Sofa_score objects are acceptable. To create
+                                         a Sofa_score object see the Sofa_score() function!")
+  remDr <- server$remDr
   url <- 'https://www.sofascore.com/team/football/palmeiras/1963'
   remDr$navigate(url)
   webElem <- remDr$findElements(using = 'class',"dotAOs")
@@ -29,10 +35,10 @@ Last_Games <- function(){
   while ( i <= length(BD)) {
     j<- j+1
     i <- 7*j+1
-    if (str_length(BD[i]) == 8) {
+    if (stringr::str_length(BD[i]) == 8) {
       BD <- c(BD[1:(i-1)],BD[i-7],BD[i:length(BD)])
     }
-    if (str_length(BD[i+1]) != 8|as.Date(BD[i+1],format = "%d/%m/%y")>Sys.Date()) {
+    if (stringr::str_length(BD[i+1]) != 8|as.Date(BD[i+1],format = "%d/%m/%y")>Sys.Date()) {
       BD <- BD[1:(i-1)]
       break
     }

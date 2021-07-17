@@ -3,5 +3,6 @@
 export(Brasileiro_A)
 export(Close_Sofa)
 export(Last_Games)
+export(Players)
 export(Sofa_score)
 export(Upcoming_Games)

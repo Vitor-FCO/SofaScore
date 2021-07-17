@@ -5,10 +5,12 @@
 \alias{Upcoming_Games.}
 \title{Função para trazer os proximos jogos do time.}
 \usage{
-Upcoming_Games(server = NULL)
+Upcoming_Games(server = NULL, team = NULL)
 }
 \arguments{
 \item{server}{connection with the SofaScore website by the Sofa_score() function, this object should be of the class "SofaScore".}
+
+\item{team}{esse objeto descreve o time que deseja saber o elenco.}
 }
 \value{
 retorna próximos jogos.

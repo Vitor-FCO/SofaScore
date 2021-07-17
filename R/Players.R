@@ -1,12 +1,11 @@
 # ---------------------------------------------
 #' Função que retorna o elenco do time.
 #'
-#' @aliases Upcoming_Games.
+#' @aliases Players.
 #' @export
 #' @param server connection with the SofaScore website by the Sofa_score() function, this object should be of the class remoteDriver
 #' @param team esse objeto descreve o time que deseja saber o elenco.
 #' @param position esse objeto informa a posição dos jogadores que deseja extrair informações.
-#' @param ... argumentos adicionais passados para outros métodos.
 #' @return retorna elenco o time.
 #'
 #' @example
@@ -30,11 +29,6 @@ Players <- function(server = NULL,team=NULL,position=NULL){
     Sys.sleep(5)
     remDr$executeScript("window.scrollTo(0,document.body.scrollHeight);")
     remDr$navigate(url)
-    # #clicando aleatório na página só para ela carregar
-    # webElemB <- remDr$findElements(using = 'class',"iDNquT")
-    # webElemB <- webElemB[[length(webElemB)]]
-    # webElemB$clickElement()
-    # webElemB$clickElement()
     remDr$executeScript("window.scrollTo(0,document.body.scrollHeight*2/6);")
     Sys.sleep(2)
     webElem <- remDr$findElement("css", "body")
@@ -42,18 +36,9 @@ Players <- function(server = NULL,team=NULL,position=NULL){
     Sys.sleep(1) # comando para esperar 1 segundo aqui
     #Clicando no botão para os jogadores ficarm na lista
     webElemB <- remDr$findElements(using = 'class',"bfqsCw")
-    # remDr$executeScript("window.scrollTo(0,document.body.scrollHeight*2/6);")
-    # Sys.sleep(2)
-    # webElemB <- remDr$findElements(using = 'class',"bfqsCw")
     webElemB <- webElemB[[length(webElemB)]]
     webElemB$clickElement()
     Sys.sleep(1) # comando para esperar 1 segundo aqui
-    # webElemA <- remDr$findElement(using = 'xpath',"/html/body/div[1]/main/div/div[2]/div[1]/div[1]/div[5]/div[2]")
-    # webElemA$clickElement()
-    # Segunda tentativa: Clicando no botão para os jogadores ficarm na lista
-    #webElemB <- remDr$findElement(using = 'xpath',"/html/body/div[1]/main/div/div[2]/div[1]/div[1]/div[5]/div[2]/div[1]/a[2]")
-    #webElemB <- webElemB[[length(webElemB)]]
-    #webElemB$clickElement() # clicar no List View do site
     webElem <- remDr$findElements(using = 'class',"dtirhQ")
     webElem <- unlist(lapply(webElem, function(x){x$getElementText()}))[[length(webElem)]]
     webElem <- stringr::str_replace_all(webElem, "\n- ", "\n-\n")

@@ -20,4 +20,4 @@ Config/testthat/edition: 3
 Depends: 
     R (>= 4.0)
 RoxygenNote: 7.1.1
-Imports: RSelenium, stringr, lubridate
+Imports: RSelenium, stringr, lubridate, utils

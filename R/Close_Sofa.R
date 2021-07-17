@@ -14,8 +14,8 @@
 #' }
 
 Close_Sofa <- function(server = NULL, ...){
-  if(class(server) != "SofaScore") stop("Only Sofa_score objects are acceptable. To create
-                                         a Sofa_score object see the Sofa_score() function!")
+  if(class(server) != "SofaScore") stop("Only SofaScore objects are acceptable. To create
+                                         a SofaScore object see the Sofa_score() function!")
   remDr <- server$remDr
   remDr$close()
 }

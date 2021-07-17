@@ -7,9 +7,6 @@
 \format{
 A data frame with 13 rows and 2 variables
 }
-\usage{
-data(TabLink)
-}
 \description{
 Data table indicating the team and the link to the Sofa Score page it has.
 }

@@ -4,6 +4,7 @@
 #' @aliases Last_Games.
 #' @export
 #' @param server connection with the SofaScore website by the Sofa_score() function, this object should be of the class "SofaScore".
+#' @param team esse objeto descreve o time que deseja saber o elenco.
 #' @return retorna últimos jogos.
 #'
 #' @example
@@ -13,11 +14,11 @@
 #'
 #' }
 
-Last_Games <- function(server = NULL){
-  if(class(server) != "Sofa_score") stop("Only Sofa_score objects are acceptable. To create
-                                         a Sofa_score object see the Sofa_score() function!")
+Last_Games <- function(server = NULL, team=NULL){
+  if(class(server) != "SofaScore") stop("Only SofaScore objects are acceptable. To create
+                                         a SofaScore object see the Sofa_score() function!")
   remDr <- server$remDr
-  url <- 'https://www.sofascore.com/team/football/palmeiras/1963'
+  url <- TabLink[TabLink[,1]== team,2]
   remDr$navigate(url)
   webElem <- remDr$findElements(using = 'class',"dotAOs")
   webElem <- unlist(lapply(webElem, function(x){x$getElementText()}))

@@ -17,8 +17,8 @@
 #' }
 
 Brasileiro_A <- function(server = NULL,type=NULL,year=NULL, ...){
-  if(class(server) != "Sofa_score") stop("Only Sofa_score objects are acceptable. To create
-                                         a Sofa_score object see the Sofa_score() function!")
+  if(class(server) != "SofaScore") stop("Only SofaScore objects are acceptable. To create
+                                         a SofaScore object see the Sofa_score() function!")
   url <- 'https://www.sofascore.com/tournament/football/brazil/brasileiro-serie-a/325'
   remDr <- server$remDr
   remDr$navigate(url)

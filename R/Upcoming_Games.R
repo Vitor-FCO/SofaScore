@@ -23,15 +23,15 @@ Upcoming_Games <- function(server = NULL, team=NULL){
   remDr$navigate(url)
   webElem1<- NULL
   repeat{
-    webElem <- remDr$findElements(using = 'class',"dotAOs")
-    webElem <- unlist(lapply(webElem, function(x){x$getElementText()}))
-    webElem1 <- c(webElem1,webElem)
-    webElemB <- remDr$findElements(using = 'class',"epVTwK")
-    if(length(webElemB) == 1){
+    webElem <- remDr$findElements(using = 'class',"dQuvSG") # selecionando tabela da web com os dados dos jogos
+    webElem <- unlist(lapply(webElem, function(x){x$getElementText()})) # selecionando texto na tabela
+    webElem1 <- c(webElem1,webElem) # juntando texto de cada página em um único objeto
+    webElemB <- remDr$findElements(using = 'xpath', "/html/body/div[1]/main/div/div[2]/div[1]/div[1]/div[3]/div/div/div/div/div[1]/div[2]/div") # selecionando botão "next"
+    if(length(webElemB) == 0){
       break
     }
     else{
-      webElemB <- webElemB[[2]]
+      webElemB <- webElemB[[1]]
       webElemB$clickElement()
     }
   }
@@ -64,11 +64,13 @@ Upcoming_Games <- function(server = NULL, team=NULL){
       BD <- c(BD[1:(i-1)],BD[i-7],BD[i:length(BD)])
     }
   }
-  BD <- data.frame(matrix(BD,ncol = 7,byrow =TRUE))
+  BD <- matrix(BD,ncol = 7,byrow =TRUE)
+  BD <- data.frame(BD[order(as.Date(BD[,2],format = "%d/%m/%y"),decreasing = FALSE),])
   v <- as.Date(BD[,2],format = "%d/%m/%y")>Sys.Date()
   Prox <-  which(v %in% "TRUE")
   names(BD) <- c("Championship", "Date","Hora", "Home Team","Away Team","Home Team Goals","Away Team Goals")
   BD <- BD[Prox,c(-6,-7)]
+  rownames(BD) <-  NULL # tirar a numeração que estava errada das linhas
   return(BD)
 }
 

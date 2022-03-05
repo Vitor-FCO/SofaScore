@@ -28,7 +28,7 @@ Brasileiro_A <- function(server = NULL,type=NULL,year=NULL, ...){
   caminho <- paste("/html/body/div[1]/main/div/div[2]/div[1]/div[1]/div[1]/
                    div[2]/div/div[2]/div/div/ul/div/div[1]/li[",p,"]",sep="")
   # Selecionando o botão para selecionar o ano
-  webElemB <- remDr$findElements(using = 'class',"iDNquT")
+  webElemB <- remDr$findElements(using = 'class',"fEysW")
   webElemB <- webElemB[[1]]
   webElemB$clickElement()
   Sys.sleep(1)
@@ -37,13 +37,14 @@ Brasileiro_A <- function(server = NULL,type=NULL,year=NULL, ...){
   option$clickElement()
   type<- toupper(type)
   Bot <- switch(type,
-                OVERALL = remDr$findElements(using = 'class',"bfqsCw")[[1]],
-                HOME = remDr$findElements(using = 'class',"bfqsCw")[[2]],
-                AWAY = remDr$findElements(using = 'class',"bfqsCw")[[3]],
+                OVERALL = remDr$findElements(using = 'class',"icEGnr")[[1]],
+                HOME = remDr$findElements(using = 'class',"icEGnr")[[2]],
+                AWAY = remDr$findElements(using = 'class',"icEGnr")[[3]],
                 { cat("option not recognised\n")})
   Bot$clickElement()
   Sys.sleep(1) # comando para esperar 1 segundo aqui
-  webElem <- remDr$findElements(using = 'class',"hRIdgz")
+  # Quando precisar atulizar é proximo comando, atualizar nome da class
+  webElem <- remDr$findElements(using = 'class',"loCAKW")
   webElem <- unlist(lapply(webElem, function(x){x$getElementText()}))[[1]]
   BD <- unlist(strsplit(webElem, split = '\n'))
   BD = BD[11:170]
